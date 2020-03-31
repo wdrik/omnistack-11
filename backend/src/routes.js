@@ -1,5 +1,8 @@
 const express = require('express');
 
+const OngController = require('./controllers/OngController');
+const IncidentController = require('./controllers/IncidentController');
+
 const routes = express.Router();
 
 /**
@@ -19,12 +22,10 @@ const routes = express.Router();
  * Request Body: Corpo da requisição, utilizado para criar ou alterar recursos
  */
 
-routes.post('/ongs', (req, res) => {
-  const data = req.body;
+routes.get('/ongs', OngController.index);
+routes.post('/ongs', OngController.create);
 
-  console.log(data);
-
-  return res.json({ Hello: 'World!' });
-});
+routes.get('/incidents', IncidentController.index);
+routes.post('/incidents', IncidentController.create);
 
 module.exports = routes;
